@@ -13,7 +13,7 @@ int main() {
     // 2: without size (dynamic vector)
     int x;
     cin >> x;
-    vector<int>v2;
+    vector<int>v2; 
     for(int i = 0; i < x; i++) {
         int a;
         cin >> a;
