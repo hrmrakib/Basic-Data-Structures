@@ -11,12 +11,16 @@ int main() {
     }
 
     int count = 0;
+
     for(int i = 0; i < n; i++) {
         int x = v[i] + 1;
 
-        bool it = find(v.begin(), v.end(), x);
-        cout << it << endl;
-        
+        for(int j = 0; j < n; j++){
+            if(x == v[j]){
+                count++;
+                break;
+            }
+        }
     }
 
     cout << count << endl;
