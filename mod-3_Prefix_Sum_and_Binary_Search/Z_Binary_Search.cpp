@@ -4,16 +4,18 @@ using namespace std;
 int main() {
     int n, q;
     cin >> n >> q;
-    vector<int>v(n+1);
-    for(int i = 1; i <= n; i++) {
+    vector<int>v(n);
+    for(int i = 0; i < n; i++) {
         cin >> v[i];
     }
 
-    for(int i = 1; i <= q; i++){
+    sort(v.begin(), v.begin() + n);
+
+    for(int i = 0; i < q; i++){
         int val;
         cin >> val;
-        int l = 1;
-        int r = n;
+        int l = 0;
+        int r = n - 1;
         bool flag = false;
 
         while (l <= r) {
