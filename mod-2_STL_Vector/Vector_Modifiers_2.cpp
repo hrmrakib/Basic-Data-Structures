@@ -10,7 +10,7 @@ int main() {
     // for(int x:v){
     //     cout << x << " ";
     // }
-
+ 
     auto it = find(v.begin(), v.end(), 30);
 
     if(it==v.end()) {

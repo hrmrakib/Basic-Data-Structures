@@ -10,9 +10,8 @@ int main() {
     }
 
     for(int i = 0; i < n; i++) {
-        cout << i <<  endl;
-        for(int j = 0; j < n; j++) {
-            if(v`   [i] == v[j]) {
+        for(int j = 0; j < i; j++) {
+            if(v[i] == v[j]) {
                 cout << "YES" << endl;
                 return 0;
             }
