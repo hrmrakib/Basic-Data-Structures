@@ -18,5 +18,9 @@ int main() {
     b.next = &c;
     c.next = NULL;
 
+    cout << a.val << endl;
+    // cout << (*a.next).val << endl; // dereference of the pointer or below way
+    cout << a.next->val << endl;
+
     return 0;
 }
