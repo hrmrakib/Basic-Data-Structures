@@ -26,11 +26,15 @@ Node *input_tree()
         cin >> l >> r;
 
         Node *myLeft, *myRight;
-        if(l == -1) myLeft = NULL;
-        else myLeft = new Node(l);
+        if (l == -1)
+            myLeft = NULL;
+        else
+            myLeft = new Node(l);
 
-        if (r == -1) myRight = NULL;
-        else myRight = new Node(r);
+        if (r == -1)
+            myRight = NULL;
+        else
+            myRight = new Node(r);
 
         f->left = myLeft;
         f->right = myRight;
@@ -47,11 +51,33 @@ Node *input_tree()
     return root;
 }
 
-bool search(Node* root, int val) {
-    
+bool search(Node *root, int val)
+{
+    if (root == NULL)
+        return false;
+    if (root->val == val)
+        return true;
+
+    if (root->val < val)
+    {
+        return search(root->right, val);
+    }
+    else
+    {
+        return search(root->left, val);
+    }
 }
 
-int main() {
+int main()
+{
+    Node *root = input_tree();
     
+    int val;
+    cin >> val;
+
+    if (search(root, val))
+        cout << "Found\n";
+    else
+        cout << "Not Found\n";
     return 0;
 }
