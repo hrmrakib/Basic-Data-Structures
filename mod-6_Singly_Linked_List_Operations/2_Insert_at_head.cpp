@@ -12,7 +12,7 @@ class Node {
     }
 };
 
-void insert_at_head(Node* head, int val) {
+void insert_at_head(Node* &head, int val) { //use & - if have a change the head
     Node * newnode = new Node(val);
     newnode->next = head;
     head = newnode;
