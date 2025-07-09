@@ -19,9 +19,8 @@ void insert_at_tail(Node* head, Node* &tail, int val) {
         tail = newnode;
         return;
     }
-    tail->next = newnode;
-    // tail = tail->next; // or,
-    tail->next = newnode;
+    tail = tail->next; // or,
+    // tail->next = newnode;
 }
 
 void print_linked_list(Node* head) {

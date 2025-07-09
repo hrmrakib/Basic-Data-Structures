@@ -19,15 +19,15 @@ void insert_at_tail(Node* head, Node* &tail, int val) {
         tail = newnode;
         return;
     }
-    tail->next = newnode;
     // tail = tail->next; // or,
     tail->next = newnode;
+    tail = newnode;
 }
 
 void print_linked_list(Node* head) {
     Node*temp = head;
     while(temp != NULL) {
-        cout << temp->next << endl;
+        cout << temp->val << endl;
         temp = temp->next;
     }
 }
