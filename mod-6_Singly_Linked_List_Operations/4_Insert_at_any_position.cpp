@@ -12,37 +12,37 @@ class Node {
     }
 };
 
-void insert_at_tail(Node* head, int val) {
-    Node*newnode = new Node(val);
-    
-    if(head == NULL) {
-        head = newnode;
-        return;
-    }
-    Node*temp = head;
-    while(temp->next != NULL) {         // O(N)
+void insert_at_any_pos(Node* head, int idx, int val) {
+    Node* newnode = new Node(val);
+    Node* temp = head;
+    for(int i = 0; i < idx; i++) {          // O(N)
         temp = temp->next;
+        if(temp == NULL) {
+            return;
+        }
     }
-
-    // right now temp is at last node
+    newnode->next = temp->next;
     temp->next = newnode;
 }
 
 void print_linked_list(Node* head) {
     Node*temp = head;
     while(temp != NULL) {           // O(N)
-        cout << temp->next << endl;
+        cout << temp->val << endl;
         temp = temp->next;
     }
 }
 
+
 int main() {
     Node* head = new Node(10);
     Node* a = new Node(20);
-    Node* tail = new Node(30);
+    Node* b = new Node(30);
 
-    insert_at_tail(head, 50);
+    head->next = a;
+    a->next = b;
+
+    insert_at_any_pos(head, 1, 100);
     print_linked_list(head);
-    
     return 0;
 }
