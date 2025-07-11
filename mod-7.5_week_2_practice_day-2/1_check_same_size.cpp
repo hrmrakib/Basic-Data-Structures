@@ -43,8 +43,8 @@ int get_size(Node* head) {
 }
 
 int main() {
-    Node* head = NULL;    
-    Node* tail = NULL; 
+    Node* head = NULL;   
+    Node* tail = NULL;
 
     Node* head2 = NULL;    
     Node* tail2 = NULL;    
