@@ -12,6 +12,12 @@ class Node {
     }
 };
 
+void insert_at_head(Node* &head, int val) {
+    Node * newnode = new Node(val);
+    newnode->next = head;
+    head = newnode;
+}
+
 void insert_at_tail(Node* &head, Node* &tail, int val) {
     Node* newnode = new Node(val);
     if(head == NULL) {
@@ -23,16 +29,27 @@ void insert_at_tail(Node* &head, Node* &tail, int val) {
     tail = newnode;
 }
 
-void print_maximum(Node* head) {
+void insert_at_any_pos(Node* head, int idx, int val) {
+    Node* newnode = new Node(val);
     Node* temp = head;
-    int max = temp->val;
-    while(temp != NULL) {
-        if(max < temp->val) {
-            max = temp->val;
+    for(int i = 0; i < idx; i++) {
+        temp = temp->next;
+        if(temp == NULL) {
+            return;
         }
+    }
+    newnode->next = temp->next;
+    temp->next = newnode;
+}
+
+int get_size(Node* head) {
+    Node* temp = head;
+    int count = 0;
+    while(temp != NULL){
+        count++;
         temp = temp->next;
     }
-    cout << max << endl;
+    return count;
 }
 
 int main() {
@@ -48,6 +65,6 @@ int main() {
         insert_at_tail(head, tail, val);
     }
 
-    print_maximum(head);
+
     return 0;
 }

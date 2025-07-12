@@ -17,6 +17,7 @@ void insert_at_head(Node* &head, int val) { //use & - if have a change the head
     newnode->next = head;
     head = newnode;
 }
+
 void print_linked_list(Node* head) {
     Node* temp = head;
 
