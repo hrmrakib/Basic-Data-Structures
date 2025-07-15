@@ -57,20 +57,13 @@ int main()
         Node *head = NULL;
         Node *tail = NULL;
         
-        int index, val;
-        cin >> index >> val;
-
-        if (index == 0)
-        {
-            insert_at_head(head, tail, val);
-        }
-        else if (index == 1)
-        {
+        int val;
+        while(true) {
+            cin >> val;
+            if(val == -1) {
+                break;
+            }
             insert_at_tail(head, tail, val);
-        }
-        else if (index == 2)
-        {
-            delete_at_index(head, tail, val);
         }
 
         print_linked_list(head);
