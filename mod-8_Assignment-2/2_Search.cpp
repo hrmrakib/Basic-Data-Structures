@@ -14,15 +14,6 @@ public:
     }
 };
 
-void insert_at_head(Node *&head, Node *&tail, int val)
-{
-    Node *newnode = new Node(val);
-    newnode->next = head;
-    head = newnode;
-    if (tail == NULL)
-        tail = head;
-}
-
 void insert_at_tail(Node *&head, Node *&tail, int val)
 {
     Node *newnode = new Node(val);
@@ -36,15 +27,19 @@ void insert_at_tail(Node *&head, Node *&tail, int val)
     tail = newnode;
 }
 
-void print_linked_list(Node *head)
+int find_index(Node *head, int x)
 {
-    Node *temp = head;
-    while (temp != NULL)
+    int idx = 0;
+    while (head != NULL)
     {
-        cout << temp->val << " ";
-        temp = temp->next;
+        if (head->val == x)
+        {
+            return idx;
+        }
+        head = head->next;
+        idx++;
     }
-    cout << endl;
+    return -1;
 }
 
 int main()
@@ -56,17 +51,27 @@ int main()
     {
         Node *head = NULL;
         Node *tail = NULL;
-        
+
         int val;
-        while(true) {
+        while (true)
+        {
             cin >> val;
-            if(val == -1) {
+            if (val == -1)
                 break;
-            }
             insert_at_tail(head, tail, val);
         }
 
-        print_linked_list(head);
+        int x;
+        cin >> x;
+
+        cout << find_index(head, x) << endl;
+
+        while (head != NULL)
+        {
+            Node *tmp = head;
+            head = head->next;
+            delete tmp;
+        }
     }
 
     return 0;

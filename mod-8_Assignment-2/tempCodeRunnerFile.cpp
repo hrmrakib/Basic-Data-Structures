@@ -1,7 +1,5 @@
-f (idx == 0) {
-        Node* temp = head;
-        head = head->next;
-        if (head == NULL) tail = NULL;
-        delete temp;
-        return;
-    }
+while (head != NULL) {
+        //     Node *tmp = head;
+        //     head = head->next;
+        //     delete tmp;
+        // }
