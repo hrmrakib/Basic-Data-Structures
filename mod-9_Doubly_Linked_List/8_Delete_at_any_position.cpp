@@ -54,8 +54,8 @@ void delete_at_any_position(Node* &head, int index) {
         temp = temp->next;
     }
     Node* deletenode = temp->next;
-    temp->next = deletenode->next->next;
-    temp->next->next->prev = deletenode->prev;
+    temp->next = temp->next->next;
+    temp->next->prev = temp;
     delete deletenode;
 }
 
@@ -69,6 +69,7 @@ int main() {
     a->prev = head;
     a->next = b;
     b->prev = a;
+    b->next = tail;
     tail->prev = b;
 
    
