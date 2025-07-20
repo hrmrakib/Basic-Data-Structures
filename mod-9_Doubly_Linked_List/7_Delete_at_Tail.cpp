@@ -48,18 +48,15 @@ void insert_at_any_pos(Node* &head, int index, int val) {
     temp->next = newnode;
 }
 
-void delete_at_head(Node* &head) {
+void delete_at_tail(Node* &head, Node* &tail) {
     Node* deletenode = head;
-    // deletenode->next->prev = NULL;
-    // head = deletenode->next;
-
-    head = head->next;
-    if(head == NULL) {
-        tail = NULL;
+    tail = tail->prev;
+    tail->next = NULL;
+    delete deletenode;
+    if(tail == NULL) {
+        head = NULL;
         return;
     }
-    head->prev = NULL;
-    delete deletenode;
 }
 
 int main() {
@@ -72,14 +69,10 @@ int main() {
     a->next = tail;
     tail->prev = a;
 
-    // insert_at_any_pos(head, 2, 100);
-    // insert_at_any_pos(head, 2, 200);
-    
-    delete_at_head(head);
-    delete_at_head(head);
+   
+    delete_at_tail(head);
 
     print_forward(head);
-    // print_backward(tail);
 
     return 0;
 }
