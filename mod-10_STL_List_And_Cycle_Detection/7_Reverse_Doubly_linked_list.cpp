@@ -5,10 +5,12 @@ class Node {
     public: 
         int val;
         Node *next;
+        Node *prev;
 
     Node(int val) {
         this->val = val;
         this->next = NULL;
+        this->prev = NULL;
     }
 };
 
@@ -23,16 +25,11 @@ void insert_at_tail(Node* &head, Node* &tail, int val) {
     tail = newnode;
 }
 
-void reverse_linked_list(Node* &head, Node* &tail, Node* temp) {
-    if (temp->next == NULL)
+void reverse_doubly_linked_list(Node* head, Node* tail) {
+    for (Node* i = head, *j = tail; i != j, i->prev != j; i = i->next, j = j->prev)
     {
-        head = temp;
-        return;
+        swap(i->val, j->val);
     }
-    reverse_linked_list(head, tail, temp->next);
-    temp->next->next = temp;
-    temp->next = NULL;
-    tail = temp;
 }
 
 void print_linked_list(Node* head) {
@@ -56,10 +53,10 @@ int main() {
         }
         insert_at_tail(head, tail, val);
     } 
+    print_linked_list(head);
+    reverse_doubly_linked_list(head, tail);
 
-    reverse_linked_list(head, tail, head);
-    // print_linked_list(head);
     cout << head->val << endl;
-    cout << head->next->val << endl;
+
     return 0;
 }
