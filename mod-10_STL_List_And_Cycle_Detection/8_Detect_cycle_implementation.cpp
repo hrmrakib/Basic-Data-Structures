@@ -34,6 +34,7 @@ int main() {
         fast = fast->next->next;
         if (slow == fast)
         {
+            is_cycle = true;
             break;
         }
     }

@@ -34,7 +34,7 @@ void reverse_linked_list(Node* &head, Node* &tail, Node* temp) {
     temp->next = NULL;
     tail = temp;
 }
-
+ 
 void print_linked_list(Node* head) {
     Node* temp = head;
 
@@ -58,6 +58,7 @@ int main() {
     } 
 
     reverse_linked_list(head, tail, head);
+
     // print_linked_list(head);
     cout << head->val << endl;
     cout << head->next->val << endl;

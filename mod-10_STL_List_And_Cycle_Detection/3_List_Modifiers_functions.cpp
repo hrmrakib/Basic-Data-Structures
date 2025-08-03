@@ -10,7 +10,7 @@ int main() {
     // l2.assign(l.begin(), l.end());
 
     // l.push_back(40);
-    // l.push_front(50);
+    // l.push_front(50); 
 
     // l.insert(next(l.begin(), 2), v.begin(), v.end());
     // l.erase(next(l.begin(), 2), next(l.begin(), 5));

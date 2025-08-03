@@ -18,7 +18,7 @@ int main() {
         }
     }
 
-    // 3:
+    // 3: 
     for(int i = 1; i*i <= n; i++) {
         if(n % i == 0) {
             cout << i << endl; 

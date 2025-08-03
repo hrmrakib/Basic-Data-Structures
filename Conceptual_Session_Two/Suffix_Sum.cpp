@@ -10,9 +10,9 @@ int main() {
         cin >> v[i];
     }
 
-    vector<int>suf(n); 
+    vector<int>suf(n);
     suf[n-1] = v[n-1];
-    
+
     for(int i = n-2; i >= 0; i--) {
         suf[i] = suf[i+1] + v[i];
     }
