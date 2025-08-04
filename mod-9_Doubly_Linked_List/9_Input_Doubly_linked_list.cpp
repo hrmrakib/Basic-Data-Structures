@@ -33,7 +33,7 @@ void insert_at_tail(Node* &head, Node* &tail, int val) {
         return;
     }
     newnode->prev = tail;
-    tail->next = newnode;
+    tail->next = newnode; 
     tail = newnode;
 }
 
@@ -42,6 +42,7 @@ int main() {
     Node* tail = NULL;
 
     int val;
+    
     while(true) {
         cin >> val;
         if(val == -1) {

@@ -12,7 +12,7 @@ class Node {
         this->next = NULL;
         this->prev = NULL;
     }
-};
+}; 
 
 void print_forward(Node* head) {
     Node* temp = head;
