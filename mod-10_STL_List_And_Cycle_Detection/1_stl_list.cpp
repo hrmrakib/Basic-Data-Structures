@@ -11,7 +11,7 @@ int main() {
 
     // most use
     // for(int val : l) {
-    //     cout << val << endl;
+    //     cout << val << endl; 
     // }
 
     vector<int> v = {10, 20, 30, 40, 50};
