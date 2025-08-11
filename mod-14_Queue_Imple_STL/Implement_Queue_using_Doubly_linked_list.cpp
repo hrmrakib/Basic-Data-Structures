@@ -20,7 +20,7 @@ class myQueue {
         Node* tail = NULL;
         int sz = 0;
 
-    void push(int val) {
+    void push(int val) {  // 0(1)
         sz++;
         Node* newnode = new Node(val);
         if(head == NULL) {
@@ -33,7 +33,7 @@ class myQueue {
         tail = newnode;
     }
 
-    void pop() {
+    void pop() {  // 0(1)
         sz--;
         Node* deletenode = head;
         head = head->next;
@@ -45,19 +45,19 @@ class myQueue {
         head->prev = NULL;
     }
 
-    int front() {
+    int front() {  // 0(1)
         return head->val;
     }
 
-    int back() {
+    int back() {  // 0(1)
         return tail->val;
     }
 
-    int size() {
+    int size() {  // 0(1)
         return sz;
     }
 
-    bool empty() {
+    bool empty() {  // 0(1)
         return head == NULL;
     }
 };
