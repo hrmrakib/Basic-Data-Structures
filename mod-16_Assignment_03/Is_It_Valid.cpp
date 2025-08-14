@@ -3,22 +3,37 @@ using namespace std;
 
 int main()
 {
-    int n;
-    cin >> n;
+    int tc;
+    cin >> tc;
 
-    stack<string> s;
-
-    for (int i = 0; i < n; i++)
+    while (tc--)
     {
         string str;
         cin >> str;
 
+        stack<char> s;
+        
         for (char c : str)
         {
-            cout << c << " ";
+            if (!s.empty() && s.top() != c)
+            {
+                s.pop();
+            }
+            else
+            {
+                s.push(c);
+            }
+        }
+
+        if (s.empty())
+        {
+            cout << "YES\n";
+        }
+        else
+        {
+            cout << "NO\n";
         }
     }
 
-    // cout << s.top() << endl;
     return 0;
 }
