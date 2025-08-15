@@ -1,1 +1,7 @@
-Invalid
+YES
+NO
+YES
+YES
+NO
+YES
+NO

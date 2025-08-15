@@ -7,15 +7,16 @@ int main()
     cin >> tc;
 
     while (tc--)
-    { 
+    {
         string str;
         cin >> str;
 
         stack<char> s;
-        
+
         for (char c : str)
         {
-            if (!s.empty() && s.top() != c)
+
+            if (!s.empty() && s.top() == '0' && c == '1')
             {
                 s.pop();
             }

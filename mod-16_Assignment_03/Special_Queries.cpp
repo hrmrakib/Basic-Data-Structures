@@ -5,34 +5,32 @@ int main()
 {
     int tc;
     cin >> tc;
+    cin.ignore();
+
+    queue<string> q;
 
     while (tc--)
     {
-        string val;
-        getline(cin, val);
-
-        stringstream ss(val);
         int n;
         string str;
-        ss >> n >> str;
-
-        queue<char> q;
+        cin >> n;
+        if (n == 0)
+        {
+            cin >> str;
+            q.push(str);
+        }
 
         if (n == 1)
         {
-            if (!q.empty())
+            if (q.empty())
             {
-                cout << q.front();
-                q.pop();
+                cout << "Invalid\n";
             }
             else
             {
-                cout << "Invalid";
+                cout << q.front() << "\n";
+                q.pop();
             }
-        }
-        else if (n == 0)
-        {
-            q.push(str[0]);
         }
     }
 
