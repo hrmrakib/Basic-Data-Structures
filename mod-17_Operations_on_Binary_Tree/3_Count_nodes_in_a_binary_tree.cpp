@@ -20,14 +20,16 @@ Node *input_tree()
 {
     int val;
     cin >> val;
-    Node *root;
-    if (val == -1)
+    Node* root;
+    if(val == -1) {
         return NULL;
-    else
+    }else {
         root = new Node(val);
-    queue<Node *> q;
-    if (root != NULL)
+    }
+    queue<Node*> q;
+    if(root != NULL) {
         q.push(root);
+    }
 
     while (!q.empty())
     {
@@ -39,35 +41,40 @@ Node *input_tree()
         int l, r;
         cin >> l >> r;
 
-        Node *myLeft, *myRight;
-        if (l == -1)
-        {
+        Node* myLeft, *myRight;
+        if(l == -1) {
             myLeft = NULL;
-        }
-        else
-        {
+        }else{
             myLeft = new Node(l);
         }
-        if (r == -1)
-        {
+        if(r == -1) {
             myRight = NULL;
-        }
-        else
-        {
+        }else{
             myRight = new Node(r);
         }
 
         p->left = myLeft;
         p->right = myRight;
 
-        // 3. children gulo push
-        if (p->left != NULL)
+        // 3. children gula push
+        if(p->left) {
             q.push(p->left);
-        if (p->right != NULL)
+        }
+        if(p->right) {
             q.push(p->right);
+        }
     }
-
+    
     return root;
+}
+
+int count_nodes(Node* root){
+    if(root == NULL) {
+        return 0;
+    }
+    int l = count_nodes(root->left);
+    int r = count_nodes(root->right);
+    return l + r + 1;
 }
 
 void level_order(Node *root)
@@ -97,6 +104,7 @@ void level_order(Node *root)
 int main()
 {
     Node *root = input_tree();
-    level_order(root);
+    // level_order(root);
+    cout << count_nodes(root);
     return 0;
 }
