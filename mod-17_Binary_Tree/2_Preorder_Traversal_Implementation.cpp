@@ -28,7 +28,7 @@ void preorder(Node *root)
 int main()
 {
     Node *root = new Node(10);
-    Node *a = new Node(20);
+    Node *a = new Node(20);  
     Node *b = new Node(30);
     Node *c = new Node(40);
     Node *d = new Node(50);
@@ -41,5 +41,6 @@ int main()
     b->right = e;
 
     preorder(root);
+
     return 0;
 }

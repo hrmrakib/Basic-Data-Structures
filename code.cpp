@@ -1,21 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int paildrome(int x)
+class Node
 {
-    int n = x;
-    int rev = 0;
-    while (x)
+public:
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int data)
     {
-        rev = rev * 10 + x % 10;
-        x /= 10;
+        this->data = data;
+        this->left = NULL;
+        this->right = NULL;
     }
-    return rev == n;
-}
+};
 
 int main()
 {
-    int x = paildrome(123);
-    cout << "OK" << x << endl;
+    Node *root = new Node(10);
+    Node *a = new Node(20);
+    Node *b = new Node(30);
+    Node *c = new Node(40);
+    Node *d = new Node(50);
+    Node *e = new Node(60);
+    Node *f = new Node(70);
+    Node *g = new Node(80);
+    Node *h = new Node(90);
+    Node *i = new Node(100);
+
+    root->left = a;
+    root->right = b;
+    a->left = e;
+    a->right = f;
+    f->right = g;
+    b->left = c;
+    b->right = d;
+    c->right = h;
+    d->left = i;
+
     return 0;
 }

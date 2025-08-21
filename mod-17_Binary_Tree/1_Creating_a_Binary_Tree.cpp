@@ -10,9 +10,9 @@ public:
 
     Node(int val)
     {
-        data = val;
-        left = NULL;
-        right = NULL;
+        this->data = val;
+        this->left = NULL;
+        this->right = NULL;
     }
 };
 
