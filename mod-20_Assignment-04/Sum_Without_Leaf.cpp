@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 class Node
 {
 public:
@@ -34,14 +33,11 @@ Node *input_tree()
     {
         q.push(root);
     }
-
     while (!q.empty())
     {
-        // 1. ber kore ana
-        Node *p = q.front();
+        Node *f = q.front();
         q.pop();
 
-        // 2. kaj kore ana
         int l, r;
         cin >> l >> r;
 
@@ -63,24 +59,22 @@ Node *input_tree()
             myRight = new Node(r);
         }
 
-        p->left = myLeft;
-        p->right = myRight;
+        f->left = myLeft;
+        f->right = myRight;
 
-        // 3. children gula push
-        if (p->left)
+        if (f->left)
         {
-            q.push(p->left);
+            q.push(f->left);
         }
-        if (p->right)
+        if (f->right)
         {
-            q.push(p->right);
+            q.push(f->right);
         }
     }
-
     return root;
 }
 
-int count_leaf_nodes(Node *root)
+int sum_without_leaf(Node *root)
 {
     if (root == NULL)
     {
@@ -88,41 +82,14 @@ int count_leaf_nodes(Node *root)
     }
     if (root->left == NULL && root->right == NULL)
     {
-        return 1;
+        return 0;
     }
-    int l = count_leaf_nodes(root->left);
-    int r = count_leaf_nodes(root->right);
-    return l + r;
-}
-
-void level_order(Node *root)
-{
-    if (root == NULL)
-        cout << "Tree is empty" << endl;
-    queue<Node *> q;
-    q.push(root);
-
-    while (!q.empty())
-    {
-        // 1. ber kore ana
-        Node *f = q.front();
-        q.pop();
-
-        // 2. kaj kore ana
-        cout << f->val << " ";
-
-        // 3. children gulo push
-        if (f->left != NULL)
-            q.push(f->left);
-        if (f->right != NULL)
-            q.push(f->right);
-    }
+    return root->val + sum_without_leaf(root->left) + sum_without_leaf(root->right);
 }
 
 int main()
 {
     Node *root = input_tree();
-    // level_order(root);
-    cout << count_leaf_nodes(root);
+    cout << sum_without_leaf(root);
     return 0;
 }
