@@ -1,5 +1,3 @@
-// https://www.naukri.com/code360/problems/node-level_920383
-
 #include <bits/stdc++.h>
 /************************************************************
 
@@ -8,13 +6,12 @@
     template <typename T>
     class TreeNode {
        public:
-        T val;
-        bool isOriginal;
+        T data;
         TreeNode<T> *left;
         TreeNode<T> *right;
 
-        TreeNode(T val) {
-            this->val = val;
+        TreeNode(T data) {
+            this->data = data;
             left = NULL;
             right = NULL;
         }
@@ -22,13 +19,17 @@
 
 ************************************************************/
 
-int nodeLevel(TreeNode<int> *root, int searchedValue)
+vector<int> getLeftView(TreeNode<int> *root)
 {
+    vector<int> ans;
     queue<pair<TreeNode<int> *, int>> q;
+    bool freq[3005] = {false};
+
     if (root)
     {
         q.push({root, 1});
     }
+
     while (!q.empty())
     {
         pair<TreeNode<int> *, int> parent = q.front();
@@ -37,18 +38,21 @@ int nodeLevel(TreeNode<int> *root, int searchedValue)
         TreeNode<int> *node = parent.first;
         int level = parent.second;
 
-        if (node->val == searchedValue)
+        if (freq[level] == false)
         {
-            return level;
+            ans.push_back(node->data);
+            freq[level] = true;
         }
+
         if (node->left)
         {
             q.push({node->left, level + 1});
         }
+
         if (node->right)
         {
             q.push({node->right, level + 1});
         }
     }
-    return -1;
+    return ans;
 }
