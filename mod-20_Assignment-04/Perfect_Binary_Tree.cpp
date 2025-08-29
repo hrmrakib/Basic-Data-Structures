@@ -54,7 +54,18 @@ Node *input_tree()
     return root;
 }
 
-int max_height(Node *root)
+int count_nodes(Node *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+    int l = count_nodes(root->left);
+    int r = count_nodes(root->right);
+    return l + r + 1;
+}
+
+int get_depth(Node *root)
 {
     if (root == NULL)
     {
@@ -64,8 +75,8 @@ int max_height(Node *root)
     {
         return 0;
     }
-    int l = max_height(root->left);
-    int r = max_height(root->right);
+    int l = get_depth(root->left);
+    int r = get_depth(root->right);
     return max(l, r) + 1;
 }
 
@@ -73,6 +84,15 @@ int main()
 {
 
     Node *root = input_tree();
-    int h = max_height(root);
+    int d = get_depth(root);
+    int n = count_nodes(root);
+    if (n == pow(2, d + 1) - 1)
+    {
+        cout << "YES" << endl;
+    }
+    else
+    {
+        cout << "NO" << endl;
+    }
     return 0;
 }
