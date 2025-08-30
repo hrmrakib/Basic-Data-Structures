@@ -1,1 +1,4 @@
-ut << "\n";
+if (root != NULL)
+    // {
+    //     cout << root->val << " ";
+    // }

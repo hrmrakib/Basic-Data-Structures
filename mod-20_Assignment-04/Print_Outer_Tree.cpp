@@ -58,82 +58,51 @@ Node *input_tree()
     return root;
 }
 
-void printLeftBoundary(Node *root)
+void traverse_left(Node *root)
 {
-    Node *cur = root->left;
+    Node *cur = root;
     while (cur)
     {
-        if (!(cur->left == NULL && cur->right == NULL))
-        {
-            cout << cur->val << " ";
-        }
+        cout << cur->val << " ";
         if (cur->left)
-        {
             cur = cur->left;
-        }
-        else
-        {
+        else if (cur->right)
             cur = cur->right;
-        }
+        else
+            break;
     }
 }
 
-void printRightBoundary(Node *root)
+void traverse_right(Node *root)
 {
-    vector<int> temp;
-    Node *cur = root->right;
+    Node *cur = root;
+    stack<int> st;
     while (cur)
     {
-        if (!(cur->left == NULL && cur->right == NULL))
-        {
-            temp.push_back(cur->val);
-        }
+        st.push(cur->val);
         if (cur->right)
-        {
             cur = cur->right;
-        }
-        else
-        {
+        else if (cur->left)
             cur = cur->left;
-        }
+        else
+            break;
     }
-    for (int i = temp.size() - 1; i >= 0; i--)
+    while (!st.empty())
     {
-        cout << temp[i] << " ";
+        cout << st.top() << " ";
+        st.pop();
     }
-}
-
-void printLeaves(Node *root)
-{
-    if (!root)
-    {
-        return;
-    }
-    if (root->left == NULL && root->right == NULL)
-    {
-        cout << root->val << " ";
-        return; 
-    }
-    printLeaves(root->left);
-    printLeaves(root->right);
 }
 
 int main()
 {
     Node *root = input_tree();
-    if (!root)
-    {
-        return 0;
-    }
-
     
-    printLeftBoundary(root);
+    traverse_left(root->left);
 
-    // cout << root->val << " ";
+    cout<< root->val << " ";
 
-    // printLeaves(root);
-
-    // printRightBoundary(root);
+    traverse_right(root->right);
 
     return 0;
 }
