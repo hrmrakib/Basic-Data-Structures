@@ -82,7 +82,6 @@ int get_depth(Node *root)
 
 int main()
 {
-
     Node *root = input_tree();
     int d = get_depth(root);
     int n = count_nodes(root);

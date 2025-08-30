@@ -112,7 +112,7 @@ void printLeaves(Node *root)
     if (root->left == NULL && root->right == NULL)
     {
         cout << root->val << " ";
-        return;
+        return; 
     }
     printLeaves(root->left);
     printLeaves(root->right);
@@ -126,13 +126,14 @@ int main()
         return 0;
     }
 
-    cout << root->val << " ";
-
+    
     printLeftBoundary(root);
 
-    printLeaves(root);
+    // cout << root->val << " ";
 
-    printRightBoundary(root);
+    // printLeaves(root);
+
+    // printRightBoundary(root);
 
     return 0;
 }
