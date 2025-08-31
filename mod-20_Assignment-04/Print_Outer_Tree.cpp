@@ -58,39 +58,35 @@ Node *input_tree()
     return root;
 }
 
+stack<int> s;
+
 void traverse_left(Node *root)
 {
-    Node *cur = root;
-    while (cur)
-    {
-        cout << cur->val << " ";
-        if (cur->left)
-            cur = cur->left;
-        else if (cur->right)
-            cur = cur->right;
-        else
-            break;
+    while(root) {
+        if(root->left) {
+            if(root->val) {
+                s.push(root->val);
+            }
+            root = root->left;
+        }else{
+            if(root->val) {
+                s.push(root->val);
+            }
+            root = root->right;
+        }
     }
 }
 
 void traverse_right(Node *root)
 {
-    Node *cur = root;
-    stack<int> st;
-    while (cur)
-    {
-        st.push(cur->val);
-        if (cur->right)
-            cur = cur->right;
-        else if (cur->left)
-            cur = cur->left;
-        else
-            break;
-    }
-    while (!st.empty())
-    {
-        cout << st.top() << " ";
-        st.pop();
+    while(root) {
+        cout << root->val << " ";
+
+        if(root->right) {
+            root = root->right;
+        }else {
+            root = root->left;
+        }
     }
 }
 
@@ -99,9 +95,12 @@ int main()
     Node *root = input_tree();
     
     traverse_left(root->left);
-
+    
+    while(!s.empty()) {
+        cout << s.top() << " ";
+        s.pop();
+    }
     cout<< root->val << " ";
-
     traverse_right(root->right);
 
     return 0;
