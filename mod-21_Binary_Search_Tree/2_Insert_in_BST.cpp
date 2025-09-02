@@ -66,17 +66,54 @@ Node *input_tree()
     return root;
 }
 
-bool search(Node *root, int val)
+void level_order(Node *root)
+{
+    queue<Node *> q;
+    q.push(root);
+
+    while (!q.empty())
+    {
+        // 1. ber kore ana
+        Node *f = q.front();
+        q.pop();
+
+        // 2. kaj kore ana
+        cout << f->val << " ";
+
+        // 3. children gulo push
+        if (f->left != NULL)
+            q.push(f->left);
+        if (f->right != NULL)
+            q.push(f->right);
+    }
+}
+
+bool insert(Node *&root, int val)
 {
     if (root == NULL)
-        return false;
-    if (root->val == val)
+    {
+        root = new Node(val);
         return true;
+    }
+    if (root->val == val)
+        return false;
 
     if (root->val < val)
-        return search(root->right, val);
+    {
+        if (root->right == NULL)
+            root->right = new Node(val);
+
+        else
+            return insert(root->right, val);
+    }
     else
-        return search(root->left, val);
+    {
+        if (root->left == NULL)
+            root->left = new Node(val);
+
+        else
+            return insert(root->left, val);
+    }
 }
 
 int main()
@@ -86,9 +123,12 @@ int main()
     int val;
     cin >> val;
 
-    if (search(root, val))
-        cout << "Found\n";
+    if (insert(root, val))
+        cout << "Inserted\n";
     else
-        cout << "Not Found\n";
+        cout << "Not Inserted\n";
+
+    insert(root, 11);
+    level_order(root);
     return 0;
 }
