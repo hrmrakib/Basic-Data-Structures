@@ -99,7 +99,7 @@ Node *build_bst(int arr[], int n, int l, int r)
     root->left = rootleft;
     root->right = rootright;
     return root;
-}
+} 
 
 int main()
 {
