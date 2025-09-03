@@ -88,45 +88,31 @@ void level_order(Node *root)
     }
 }
 
-bool insert(Node *&root, int val)
+Node *build_bst(int arr[], int n, int l, int r)
 {
-    if (root == NULL)
-    {
-        root = new Node(val);
-        return true;
-    }
-    if (root->val == val)
-        return false;
-
-    if (root->val < val)
-    {
-        if (root->right == NULL)
-            root->right = new Node(val);
-        else
-            return insert(root->right, val);
-    }
-    else
-    {
-        if (root->left == NULL)
-            root->left = new Node(val);
-        else
-            return insert(root->left, val);
-    }
+    if (l > r)
+        return NULL;
+    int mid = (l + r) / 2;
+    Node *root = new Node(arr[mid]);
+    Node *rootleft = build_bst(arr, n, l, mid - 1);
+    Node *rootright = build_bst(arr, n, mid + 1, r);
+    root->left = rootleft;
+    root->right = rootright;
+    return root;
 }
 
 int main()
 {
-    Node *root = input_tree();
-
-    int val;
-    cin >> val;
-
-    if (insert(root, val))
-        cout << "Inserted\n";
-    else
-        cout << "Not Inserted\n";
-
-    insert(root, 11);
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    sort(arr, arr + n);
+    Node *root = build_bst(arr, n, 0, n - 1);
     level_order(root);
+
     return 0;
 }
