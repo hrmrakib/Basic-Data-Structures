@@ -1,0 +1,3 @@
+akib 9 91
+rakib 10 82
+sakib 21 76
