@@ -6,7 +6,7 @@ int main()
     map<int, string> mp; // O(log n)
     mp[1] = "sakib";
     mp[2] = "rakib";
-    mp[3] = "akib"; 
+    mp[3] = "akib";
 
     for (auto it = mp.begin(); it != mp.end(); it++) // it->first = key, it->second = value
     {
