@@ -7,26 +7,31 @@ int main()
     cin >> n;
     cin.ignore();
 
-    map<string, int> mp;
-
-    string str;
-    getline(cin, str);
-
-    stringstream ss(str);
-    string word;
-    while (ss >> word)
+    while (n--)
     {
-        mp[word]++;
+        map<string, int> mp;
+
+        string str;
+        getline(cin, str);
+
+        stringstream ss(str);
+        string word;
+
+        string maxWord;
+        int maxCount = 0;
+
+        while (ss >> word)
+        {
+            mp[word]++;
+
+            if (mp[word] > maxCount)
+            {
+                maxCount = mp[word];
+                maxWord = word;
+            }
+        }
+        cout << maxWord << " " << maxCount << "\n";
     }
 
-    // for (int i = 0; i < n; i++)
-    // {
-
-    // }
-
-    for (auto it : mp)
-    {
-        cout << it.first << " " << it.second << endl;
-    }
     return 0;
 }
