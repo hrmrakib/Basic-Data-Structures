@@ -13,6 +13,7 @@ public:
         this->roll = roll;
         this->marks = marks;
     }
+    Student() {}
 };
 
 class compare
@@ -50,19 +51,19 @@ int main()
     {
         int cmd;
         cin >> cmd;
-        Student top = pq.top();
 
         if (cmd == 0)
         {
             string name;
-            int roll;
-            int marks;
-
+            int roll, marks;
             cin >> name >> roll >> marks;
-            Student st(name, roll, marks);
-            pq.push(st);
+            pq.push(Student(name, roll, marks));
+
             if (!pq.empty())
+            {
+                Student top = pq.top();
                 cout << top.name << " " << top.roll << " " << top.marks << endl;
+            }
             else
                 cout << "Empty\n";
         }
@@ -70,8 +71,8 @@ int main()
         {
             if (!pq.empty())
             {
+                Student top = pq.top();
                 cout << top.name << " " << top.roll << " " << top.marks << endl;
-                pq.pop();
             }
             else
                 cout << "Empty\n";
@@ -81,16 +82,20 @@ int main()
             if (!pq.empty())
             {
                 pq.pop();
-                cout << top.name << " " << top.roll << " " << top.marks << endl;
+                if (!pq.empty())
+                {
+                    Student top = pq.top();
+                    cout << top.name << " " << top.roll << " " << top.marks << endl;
+                }
+                else
+                    cout << "Empty\n";
             }
             else
+            {
                 cout << "Empty\n";
-        }
-
-        else
-        {
-            cout << "Empty\n";
+            }
         }
     }
+
     return 0;
 }
